@@ -7,8 +7,12 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import LanguageToggle from './LanguageToggle';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
+  const { t } = useLanguage();
+  
   return (
     <header className="w-full py-4 px-6 md:px-12 flex items-center justify-between bg-white/80 backdrop-blur-sm fixed top-0 z-50">
       <div className="flex items-center">
@@ -21,27 +25,31 @@ const Navbar = () => {
       
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-8">
-        <a href="#features" className="text-gray-700 hover:text-owllink-pink transition-colors">Features</a>
-        <a href="#products" className="text-gray-700 hover:text-owllink-pink transition-colors">Products</a>
-        <a href="#medical" className="text-gray-700 hover:text-owllink-pink transition-colors">Medical</a>
-        <a href="#contact" className="text-gray-700 hover:text-owllink-pink transition-colors">Contact</a>
-        <Button className="gradient-button text-white">Get Early Access</Button>
+        <a href="#features" className="text-gray-700 hover:text-owllink-pink transition-colors">{t('nav.features')}</a>
+        <a href="#products" className="text-gray-700 hover:text-owllink-pink transition-colors">{t('nav.products')}</a>
+        <a href="#medical" className="text-gray-700 hover:text-owllink-pink transition-colors">{t('nav.medical')}</a>
+        <a href="#contact" className="text-gray-700 hover:text-owllink-pink transition-colors">{t('nav.contact')}</a>
+        <LanguageToggle />
+        <Button className="gradient-button text-white">{t('nav.earlyAccess')}</Button>
       </nav>
       
       {/* Mobile Navigation */}
       <Sheet>
-        <SheetTrigger asChild className="md:hidden">
-          <Button variant="ghost" size="icon">
-            <Menu className="h-6 w-6" />
-          </Button>
-        </SheetTrigger>
+        <div className="flex items-center space-x-2 md:hidden">
+          <LanguageToggle />
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+        </div>
         <SheetContent>
           <div className="flex flex-col space-y-4 mt-8">
-            <a href="#features" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">Features</a>
-            <a href="#products" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">Products</a>
-            <a href="#medical" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">Medical</a>
-            <a href="#contact" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">Contact</a>
-            <Button className="gradient-button text-white w-full mt-4">Get Early Access</Button>
+            <a href="#features" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">{t('nav.features')}</a>
+            <a href="#products" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">{t('nav.products')}</a>
+            <a href="#medical" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">{t('nav.medical')}</a>
+            <a href="#contact" className="text-gray-700 hover:text-owllink-pink transition-colors py-2">{t('nav.contact')}</a>
+            <Button className="gradient-button text-white w-full mt-4">{t('nav.earlyAccess')}</Button>
           </div>
         </SheetContent>
       </Sheet>

@@ -8,9 +8,19 @@ interface FeatureCardProps {
   description: string;
   icon: LucideIcon;
   className?: string;
+  translationKey?: {
+    title: string;
+    description: string;
+  };
 }
 
-const FeatureCard = ({ title, description, icon: Icon, className }: FeatureCardProps) => {
+const FeatureCard = ({ 
+  title, 
+  description, 
+  icon: Icon, 
+  className,
+  translationKey 
+}: FeatureCardProps) => {
   return (
     <div className={cn(
       "flex flex-col items-center p-6 rounded-2xl bg-white shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]",
